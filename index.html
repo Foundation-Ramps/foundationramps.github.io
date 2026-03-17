@@ -320,14 +320,7 @@ function App() {
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }} onClick={() => scrollTo("home")}>
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <rect width="36" height="36" fill="#FF6B35" rx="4" />
-            <text x="18" y="24" textAnchor="middle" fill="#0a0a0a" fontSize="18" fontFamily="Oswald" fontWeight="700">FR</text>
-          </svg>
-          <div>
-            <div style={{ fontFamily: "'Oswald', sans-serif", fontWeight: 700, fontSize: 16, letterSpacing: 2, lineHeight: 1 }}>FOUNDATION</div>
-            <div style={{ fontSize: 10, letterSpacing: 4, color: "#FF6B35", fontWeight: 600 }}>RAMPS</div>
-          </div>
+          <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 50, width: "auto", objectFit: "contain" }} />
         </div>
 
         <div className="desktop-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
@@ -413,18 +406,10 @@ function App() {
         </div>
 
         <div style={{
-          position: "absolute", right: "clamp(-100px, -5vw, 40px)",
-          bottom: "clamp(40px, 8vh, 120px)", opacity: 0.12, pointerEvents: "none",
+          position: "absolute", right: "clamp(-50px, 2vw, 80px)",
+          bottom: "clamp(40px, 8vh, 120px)", opacity: 0.2, pointerEvents: "none",
         }}>
-          <svg width="500" height="350" viewBox="0 0 500 350" fill="none" stroke="#FF6B35" strokeWidth="1.5">
-            <path d="M50 280 Q50 100 150 100 L350 100 Q450 100 450 280" />
-            <line x1="50" y1="280" x2="50" y2="320" /><line x1="450" y1="280" x2="450" y2="320" />
-            <line x1="50" y1="320" x2="450" y2="320" />
-            <line x1="30" y1="100" x2="30" y2="320" strokeDasharray="5 5" opacity="0.5" />
-            <text x="20" y="210" fill="#FF6B35" fontSize="14" fontFamily="Oswald" transform="rotate(-90,20,210)">8 FT</text>
-            <line x1="50" y1="340" x2="450" y2="340" strokeDasharray="5 5" opacity="0.5" />
-            <text x="230" y="355" fill="#FF6B35" fontSize="14" fontFamily="Oswald">16 FT</text>
-          </svg>
+          <img src="logo.jpeg" alt="Foundation Ramps Blueprint" style={{ width: "clamp(300px, 35vw, 500px)", height: "auto" }} />
         </div>
       </section>
 
@@ -734,8 +719,8 @@ function App() {
               <div style={{ marginTop: 40 }}>
                 <div style={{ fontSize: 11, letterSpacing: 3, color: "#666", marginBottom: 16, fontWeight: 600 }}>FOLLOW US</div>
                 <div style={{ display: "flex", gap: 12 }}>
-                  {[{ name: "Instagram", icon: "IG" }, { name: "TikTok", icon: "TT" }, { name: "YouTube", icon: "YT" }, { name: "Facebook", icon: "FB" }].map((s, i) => (
-                    <a key={i} href="#" className="social-icon" title={s.name}>{s.icon}</a>
+                  {[{ name: "Instagram", icon: "IG", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" }, { name: "TikTok", icon: "TT", url: "https://vt.tiktok.com/ZSuQy2yqX/" }].map((s, i) => (
+                    <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="social-icon" title={s.name}>{s.icon}</a>
                   ))}
                 </div>
               </div>
@@ -777,16 +762,12 @@ function App() {
           justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20,
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect width="28" height="28" fill="#FF6B35" rx="3" />
-              <text x="14" y="19" textAnchor="middle" fill="#0a0a0a" fontSize="14" fontFamily="Oswald" fontWeight="700">FR</text>
-            </svg>
-            <span style={{ fontFamily: "'Oswald'", fontWeight: 600, fontSize: 14, letterSpacing: 2 }}>FOUNDATION RAMPS</span>
+            <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 36, width: "auto" }} />
           </div>
           <div style={{ color: "#555", fontSize: 12, letterSpacing: 1 }}>© 2026 Foundation Ramps. All rights reserved. Built to shred.</div>
           <div style={{ display: "flex", gap: 20 }}>
-            {["Instagram", "TikTok", "YouTube"].map((s, i) => (
-              <a key={i} href="#" className="footer-link">{s.toUpperCase()}</a>
+            {[{ name: "Instagram", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" }, { name: "TikTok", url: "https://vt.tiktok.com/ZSuQy2yqX/" }].map((s, i) => (
+              <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="footer-link">{s.name.toUpperCase()}</a>
             ))}
           </div>
         </div>
