@@ -7,101 +7,180 @@
   <meta name="description" content="Custom-built skateboard ramps, rails, and obstacles. From backyard setups to full skatepark builds. Foundation Ramps — built to shred." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Permanent+Marker&family=Oswald:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: #0a0a0a; color: #f5f5f0; font-family: 'Barlow Condensed', sans-serif; overflow-x: hidden; }
+    body { background: #0a0a0a; color: #f5f2ec; font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #0a0a0a; }
-    ::-webkit-scrollbar-thumb { background: #FF6B35; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #ff5c00; border-radius: 4px; }
 
-    .nav-link {
-      color: #999; text-decoration: none; font-size: 11px; letter-spacing: 3px;
-      text-transform: uppercase; cursor: pointer; transition: color 0.3s, border-color 0.3s;
-      padding: 8px 0; border-bottom: 2px solid transparent;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --orange: #ff5c00;
+      --orange-dim: #cc4900;
+      --gray: #888;
     }
-    .nav-link:hover, .nav-link.active { color: #FF6B35; border-bottom-color: #FF6B35; }
 
-    .section-tag {
-      font-family: 'Permanent Marker', cursive; font-size: 13px; color: #FF6B35;
+    /* NAV */
+    .nav-link {
+      color: rgba(255,255,255,0.5); text-decoration: none; font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; cursor: pointer; transition: color 0.3s;
+      padding: 8px 0; font-family: 'DM Sans', sans-serif; font-weight: 500;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--orange); }
+
+    .section-label {
+      font-family: 'Space Mono', monospace; font-size: 10px; color: var(--orange);
       letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; display: inline-block;
     }
     .section-title {
-      font-family: 'Oswald', sans-serif; font-size: clamp(32px, 5vw, 56px); font-weight: 700;
-      text-transform: uppercase; line-height: 1.05; letter-spacing: -1px;
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 88px);
+      line-height: 0.9; letter-spacing: 2px;
     }
+    .section-title em { font-style: normal; color: var(--orange); }
+
     .blueprint-grid {
       background-image:
-        linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,92,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,92,0,0.03) 1px, transparent 1px);
       background-size: 40px 40px;
     }
-    .card-hover { transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s; }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(255,107,53,0.15); }
 
-    .merch-card { position: relative; overflow: hidden; cursor: pointer; }
-    .merch-card::after {
-      content: 'DM US ON INSTA →'; position: absolute; bottom: 0; left: 0; right: 0;
-      background: #FF6B35; color: #0a0a0a; font-family: 'Oswald', sans-serif; font-weight: 700;
-      font-size: 13px; letter-spacing: 2px; text-align: center; padding: 12px;
-      transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .merch-card:hover::after { transform: translateY(0); }
+    .card-hover { transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(255,92,0,0.12); }
 
     .glow-btn {
-      background: #FF6B35; color: #0a0a0a; border: none; padding: 16px 40px;
-      font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 15px;
+      background: var(--black); color: var(--white); border: none; padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px;
       letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
       position: relative; overflow: hidden; transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 10px;
     }
-    .glow-btn:hover {
-      box-shadow: 0 0 30px rgba(255,107,53,0.5), 0 0 60px rgba(255,107,53,0.2);
-      transform: translateY(-2px);
-    }
-    .glow-btn::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-    .glow-btn:hover::before { left: 100%; }
-
+    .glow-btn:hover { background: var(--orange); }
     .glow-btn-outline {
-      background: transparent; border: 2px solid #FF6B35; color: #FF6B35;
-      padding: 16px 40px; font-family: 'Oswald', sans-serif; font-weight: 700;
-      font-size: 15px; letter-spacing: 3px; text-transform: uppercase;
+      background: transparent; border: 1px solid rgba(255,92,0,0.4); color: var(--orange);
+      padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+      font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
       cursor: pointer; transition: all 0.3s;
     }
-    .glow-btn-outline:hover {
-      background: rgba(255,107,53,0.1);
-      box-shadow: 0 0 30px rgba(255,107,53,0.3);
-      transform: translateY(-2px);
+    .glow-btn-outline:hover { background: rgba(255,92,0,0.1); border-color: var(--orange); }
+
+    /* RAMP IMAGE CARDS */
+    .ramp-img-card {
+      background: #111; position: relative; overflow: hidden; cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .ramp-img-card:hover { background: #1a1a1a; }
+    .ramp-img-card:hover .ramp-card-num { color: var(--orange); }
+    .ramp-img-card:hover .ramp-card-arrow { color: var(--orange); transform: translate(3px,-3px); }
+    .ramp-img-card:hover .ramp-img-wrap img { transform: scale(1.05); }
+
+    .ramp-img-wrap {
+      width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative;
+      background: #0d0d0d; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ramp-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .ramp-card-info { padding: 20px 22px 28px; position: relative; }
+    .ramp-card-num {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      color: rgba(255,255,255,0.25); letter-spacing: 2px; margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .ramp-card-name {
+      font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+      letter-spacing: 2px; color: var(--white); margin-bottom: 6px;
+    }
+    .ramp-card-desc { font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.4); }
+    .ramp-card-arrow {
+      position: absolute; bottom: 20px; right: 20px; font-size: 18px;
+      color: rgba(255,255,255,0.15); transition: color 0.3s, transform 0.3s;
     }
 
-    .part-dot {
-      width: 18px; height: 18px; border-radius: 50%; background: #FF6B35;
-      border: 2px solid #f5f5f0; cursor: pointer; position: absolute;
-      transform: translate(-50%, -50%); transition: all 0.3s; z-index: 2;
+    /* PARTS LIST */
+    .parts-list { list-style: none; display: flex; flex-direction: column; }
+    .parts-list li {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer; transition: all 0.2s;
     }
-    .part-dot:hover, .part-dot.active {
-      background: #f5f5f0; border-color: #FF6B35;
-      box-shadow: 0 0 20px rgba(255,107,53,0.6);
-      transform: translate(-50%, -50%) scale(1.3);
+    .parts-list li:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .parts-list li:hover .part-name { color: var(--orange); }
+    .part-num {
+      font-family: 'Space Mono', monospace; font-size: 10px;
+      color: var(--orange); opacity: 0.6; margin-top: 4px; min-width: 24px;
     }
-    .part-dot::before {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      width: 30px; height: 30px; border-radius: 50%;
-      border: 1px solid rgba(255,107,53,0.4);
-      transform: translate(-50%, -50%); animation: ping 2s infinite;
+    .part-name {
+      font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+      letter-spacing: 2px; color: var(--white); transition: color 0.2s;
+    }
+    .part-desc { font-size: 12px; line-height: 1.6; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+    /* RAIL CARDS */
+    .rail-card {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+      padding: 36px 28px; position: relative; overflow: hidden; transition: all 0.3s;
+    }
+    .rail-card:hover { background: rgba(255,92,0,0.04); border-color: rgba(255,92,0,0.15); }
+
+    /* MERCH */
+    .merch-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.4s;
+    }
+    .merch-card:hover { border-color: rgba(255,92,0,0.3); }
+    .merch-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--orange); color: var(--black);
+      font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+      letter-spacing: 3px; text-align: center; padding: 12px;
+      transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .merch-card:hover .merch-overlay { transform: translateY(0); }
+
+    /* SOCIAL */
+    .social-icon {
+      width: 48px; height: 48px; border: 1px solid rgba(255,92,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Mono', monospace; font-weight: 700; font-size: 11px;
+      color: var(--orange); text-decoration: none; letter-spacing: 1px;
+      transition: all 0.3s; cursor: pointer;
+    }
+    .social-icon:hover { background: var(--orange); color: var(--black); }
+
+    .footer-link {
+      color: rgba(255,255,255,0.3); font-size: 10px; text-decoration: none;
+      letter-spacing: 2px; transition: color 0.3s; font-weight: 500;
+      font-family: 'Space Mono', monospace;
+    }
+    .footer-link:hover { color: var(--orange); }
+
+    input, textarea, select {
+      width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08); color: #f5f2ec; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: rgba(255,92,0,0.5); }
+    select { color: #888; }
+    textarea { resize: vertical; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 8px; z-index: 1001;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--white);
+      transition: all 0.3s; display: block;
     }
 
-    @keyframes ping {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
-    }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -112,13 +191,20 @@
     }
     .fade-up { animation: fadeUp 0.8s ease-out forwards; }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 8px; z-index: 1001;
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 7vw, 72px);
+      color: var(--orange); line-height: 1;
     }
-    .hamburger span {
-      width: 24px; height: 2px; background: #f5f5f0;
-      transition: all 0.3s; display: block;
+    .stat-label {
+      font-family: 'Space Mono', monospace; font-size: 9px;
+      letter-spacing: 3px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-top: 8px;
+    }
+
+    /* Noise overlay */
+    .noise-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     @media (max-width: 768px) {
@@ -130,45 +216,9 @@
         display: flex; flex-direction: column; align-items: center;
         justify-content: center; gap: 24px;
       }
-      .mobile-menu .nav-link { font-size: 18px; letter-spacing: 5px; }
+      .mobile-menu .nav-link { font-size: 16px; letter-spacing: 5px; }
       .board-grid { grid-template-columns: 1fr !important; }
-    }
-
-    .stat-num {
-      font-family: 'Oswald', sans-serif; font-size: clamp(40px, 6vw, 64px);
-      font-weight: 700; color: #FF6B35; line-height: 1;
-    }
-    .stat-label { font-size: 11px; letter-spacing: 3px; color: #666; text-transform: uppercase; margin-top: 8px; }
-
-    .social-icon {
-      width: 48px; height: 48px; border: 1px solid rgba(255,107,53,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 13px;
-      color: #FF6B35; text-decoration: none; letter-spacing: 1;
-      transition: all 0.3s; cursor: pointer;
-    }
-    .social-icon:hover { background: #FF6B35; color: #0a0a0a; }
-
-    .footer-link {
-      color: #555; font-size: 12px; text-decoration: none;
-      letter-spacing: 2px; transition: color 0.3s; font-weight: 600;
-    }
-    .footer-link:hover { color: #FF6B35; }
-
-    input, textarea, select {
-      width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08); color: #f5f5f0; font-size: 14px;
-      font-family: 'Barlow Condensed', sans-serif; outline: none; transition: border-color 0.3s;
-    }
-    input:focus, textarea:focus, select:focus { border-color: rgba(255,107,53,0.5); }
-    select { color: #888; }
-    textarea { resize: vertical; }
-
-    /* Noise overlay */
-    .noise-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 9999; opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      .ramps-grid-main { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -184,7 +234,16 @@
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
-const RAMPS = [
+const WHAT_WE_BUILD = [
+  { name: "Quarter Pipe", num: "01", desc: "The classic. A curved quarter-circle ramp used for launching, grinding, and carving.", img: "1.png" },
+  { name: "Mini Ramp", num: "02", desc: "Two quarter pipes facing each other. Perfect for backyard sessions and progression.", img: "2.png" },
+  { name: "Vert Ramp", num: "03", desc: "Full vert with vertical sections at the top. The pinnacle of ramp skateboarding.", img: "3.png" },
+  { name: "Spine", num: "04", desc: "Two ramps back-to-back sharing a single coping. Great for transfers and tricks.", img: "4.png" },
+  { name: "Kicker", num: "05", desc: "A flat angled launch ramp. Portable, versatile, and great for street setups.", img: "5.png" },
+  { name: "Pyramid", num: "06", desc: "Four-sided pyramid for multi-directional skating. A park staple worldwide.", img: "6.png" },
+];
+
+const RAMPS_101 = [
   { name: "HALFPIPE", desc: "Two sloped sides with a flat section between. The classic. Riders gain momentum by dropping in and going side to side. Can be both vert and mini.", icon: "halfpipe" },
   { name: "QUARTER PIPE", desc: "A single curved ramp — essentially one half of a halfpipe. Perfect for launching airs, stalls, and grinds on the coping.", icon: "quarter" },
   { name: "MINI RAMP", desc: "A smaller halfpipe, typically under 6 feet. Ideal for all skill levels and fits in most backyards. The most popular choice for home setups.", icon: "mini" },
@@ -200,27 +259,27 @@ const RAILS = [
   { name: "RAINBOW RAIL", desc: "A curved, arched rail. Requires maintaining balance through the changing angle of the grind surface." },
 ];
 
-const MERCH = [
-  { name: "Foundation Ramps Hoodie", color: "#FF6B35", type: "Hoodie", price: "$65" },
-  { name: "Blueprint Tee — Black", color: "#1a1a1a", type: "T-Shirt", price: "$35" },
-  { name: "Foundation Ramps Cap", color: "#FF6B35", type: "Cap", price: "$30" },
-  { name: "Sketch Logo Tee — White", color: "#f5f5f0", type: "T-Shirt", price: "$35" },
-];
-
 const BOARD_PARTS = [
-  { name: "NOSE", desc: "The front of the board — slightly wider and longer than the tail for better catch on flip tricks.", x: 15, y: 18 },
-  { name: "TAIL", desc: "The rear kick of the board — your pop zone for ollies, kickflips, and every trick in the book.", x: 75, y: 82 },
-  { name: "TRUCKS", desc: "Metal axles mounted to the underside. They let you turn and grind. Tighten for stability, loosen for carving.", x: 30, y: 55 },
-  { name: "WHEELS", desc: "Urethane wheels. Smaller = lighter for tricks. Larger = faster for cruising. Hardness matters too.", x: 12, y: 70 },
-  { name: "BEARINGS", desc: "Sit inside each wheel. ABEC ratings measure precision — higher = smoother roll. Keep them clean.", x: 50, y: 42 },
-  { name: "GRIP TAPE", desc: "Sandpaper-like sheet on top of the deck. Keeps your feet locked in. Replace when it gets slick.", x: 82, y: 30 },
-  { name: "DECK", desc: 'The wooden board itself — usually 7-ply maple. Width ranges from 7.5" to 8.5"+. Pick what feels right.', x: 50, y: 15 },
-  { name: "CONCAVE", desc: "The subtle curve across the width of the deck. Deeper concave = more foot grip and flick control.", x: 85, y: 65 },
+  { name: "Deck", num: "01", desc: "The wooden board you stand on. Usually 7–8.5\" wide, made from 7-ply maple." },
+  { name: "Trucks", num: "02", desc: "The metal T-shaped axle assembly that connects wheels to the deck." },
+  { name: "Wheels", num: "03", desc: "Polyurethane wheels rated by hardness (durometer). Harder = faster, softer = smoother." },
+  { name: "Bearings", num: "04", desc: "ABEC-rated steel bearings that sit inside each wheel and allow them to spin freely." },
+  { name: "Grip Tape", num: "05", desc: "Sandpaper-like sheet applied to the top of the deck for foot traction." },
+  { name: "Concave", num: "06", desc: "The subtle curve across the width of the deck. Deeper concave = more foot grip and flick control." },
+  { name: "Nose", num: "07", desc: "The front of the board — slightly wider and longer than the tail for better catch on flip tricks." },
+  { name: "Tail", num: "08", desc: "The rear kick of the board — your pop zone for ollies, kickflips, and every trick in the book." },
 ];
 
-function RampIcon({ type, size = 80 }) {
+const MERCH = [
+  { name: "Foundation Ramps Hoodie", color: "#ff5c00", type: "Hoodie", price: "$65" },
+  { name: "Blueprint Tee — Black", color: "#1a1a1a", type: "T-Shirt", price: "$35" },
+  { name: "Foundation Ramps Cap", color: "#ff5c00", type: "Cap", price: "$30" },
+  { name: "Sketch Logo Tee — White", color: "#f5f2ec", type: "T-Shirt", price: "$35" },
+];
+
+function RampIcon({ type, size = 70 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 80 80" fill="none" stroke="rgba(255,107,53,0.9)" strokeWidth="1.5" strokeLinecap="round">
+    <svg width={size} height={size} viewBox="0 0 80 80" fill="none" stroke="rgba(255,92,0,0.8)" strokeWidth="1.5" strokeLinecap="round">
       {type === "halfpipe" && <g><path d="M10 55 Q10 25 25 25 L55 25 Q70 25 70 55" /><line x1="10" y1="55" x2="10" y2="65" /><line x1="70" y1="55" x2="70" y2="65" /><line x1="10" y1="65" x2="70" y2="65" /><line x1="25" y1="25" x2="55" y2="25" strokeDasharray="3 3" opacity="0.5" /></g>}
       {type === "quarter" && <g><path d="M15 60 Q15 25 50 25 L65 25 L65 60 Z" /><line x1="50" y1="25" x2="65" y2="25" strokeDasharray="3 3" opacity="0.5" /></g>}
       {type === "mini" && <g><path d="M10 50 Q10 30 22 30 L58 30 Q70 30 70 50" /><line x1="10" y1="50" x2="10" y2="58" /><line x1="70" y1="50" x2="70" y2="58" /><line x1="10" y1="58" x2="70" y2="58" /></g>}
@@ -233,7 +292,7 @@ function RampIcon({ type, size = 80 }) {
 
 function RailIcon({ index }) {
   return (
-    <svg width="100%" height="30" viewBox="0 0 200 30" style={{ marginTop: 20, opacity: 0.3 }} stroke="#FF6B35" strokeWidth="1.5" fill="none">
+    <svg width="100%" height="30" viewBox="0 0 200 30" style={{ marginTop: 20, opacity: 0.25 }} stroke="#ff5c00" strokeWidth="1.5" fill="none">
       {index === 0 && <><ellipse cx="100" cy="10" rx="80" ry="4" /><line x1="30" y1="10" x2="30" y2="28" /><line x1="170" y1="10" x2="170" y2="28" /></>}
       {index === 1 && <><rect x="20" y="8" width="160" height="6" rx="1" /><line x1="40" y1="14" x2="40" y2="28" /><line x1="160" y1="14" x2="160" y2="28" /></>}
       {index === 2 && <><polyline points="20,18 70,8 130,18 180,8" /><line x1="40" y1="18" x2="40" y2="28" /><line x1="160" y1="10" x2="160" y2="28" /></>}
@@ -243,9 +302,9 @@ function RailIcon({ index }) {
 }
 
 function MerchIcon({ type, color }) {
-  const c = color === "#1a1a1a" ? "#f5f5f0" : color;
+  const c = color === "#1a1a1a" ? "#f5f2ec" : color;
   return (
-    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke={c} strokeWidth="1.5" opacity="0.6">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke={c} strokeWidth="1.5" opacity="0.5">
       {type === "Hoodie" && <g><path d="M25 25 L20 20 L10 30 L20 40 L20 65 L60 65 L60 40 L70 30 L60 20 L55 25" /><path d="M25 25 Q30 35 40 35 Q50 35 55 25" /><path d="M35 35 L35 45 Q40 50 45 45 L45 35" strokeDasharray="2 2" /></g>}
       {type === "T-Shirt" && <g><path d="M28 22 L15 28 L20 40 L28 36 L28 65 L52 65 L52 36 L60 40 L65 28 L52 22" /><path d="M28 22 Q35 30 40 30 Q45 30 52 22" /></g>}
       {type === "Cap" && <g><path d="M15 45 Q15 25 40 22 Q65 25 65 45" /><line x1="10" y1="45" x2="70" y2="45" strokeWidth="3" /><path d="M10 45 Q5 48 8 52 L25 50" /></g>}
@@ -284,10 +343,9 @@ function Counter({ end, duration = 2000, suffix = "" }) {
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activePart, setActivePart] = useState(null);
   const [activeRamp, setActiveRamp] = useState(0);
 
-  const sections = ["home", "ramps", "rails", "skateboard", "about", "merch", "contact"];
+  const sections = ["home", "builds", "ramps", "rails", "skateboard", "about", "merch", "contact"];
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -313,19 +371,21 @@ function App() {
       {/* NAV */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: "rgba(10,10,10,0.9)", backdropFilter: "blur(20px)",
+        background: "rgba(10,10,10,0.92)", backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255,107,53,0.1)",
-        padding: "0 clamp(20px, 4vw, 60px)", height: 70,
+        borderBottom: "1px solid rgba(255,92,0,0.08)",
+        padding: "0 clamp(20px, 4vw, 60px)", height: 64,
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }} onClick={() => scrollTo("home")}>
-          <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 50, width: "auto", objectFit: "contain" }} />
+          <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 46, width: "auto", objectFit: "contain" }} />
         </div>
 
         <div className="desktop-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {sections.map(s => (
-            <span key={s} className={"nav-link" + (activeSection === s ? " active" : "")} onClick={() => scrollTo(s)}>{s}</span>
+            <span key={s} className={"nav-link" + (activeSection === s ? " active" : "")} onClick={() => scrollTo(s)}>
+              {s === "builds" ? "what we build" : s}
+            </span>
           ))}
         </div>
 
@@ -338,7 +398,9 @@ function App() {
         {menuOpen && (
           <div className="mobile-menu">
             {sections.map(s => (
-              <span key={s} className={"nav-link" + (activeSection === s ? " active" : "")} onClick={() => scrollTo(s)}>{s}</span>
+              <span key={s} className={"nav-link" + (activeSection === s ? " active" : "")} onClick={() => scrollTo(s)}>
+                {s === "builds" ? "what we build" : s}
+              </span>
             ))}
           </div>
         )}
@@ -351,40 +413,39 @@ function App() {
         padding: "100px clamp(20px, 4vw, 60px) 60px",
       }}>
         <div style={{
-          position: "absolute", right: "-5%", top: "50%",
-          transform: "translateY(-50%) rotate(-90deg)",
-          fontFamily: "'Oswald', sans-serif", fontSize: "clamp(80px, 15vw, 200px)",
-          fontWeight: 800, color: "rgba(255,107,53,0.04)", whiteSpace: "nowrap",
-          letterSpacing: 20, pointerEvents: "none", userSelect: "none",
+          position: "absolute", bottom: "-40px", left: "-10px",
+          fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(120px, 20vw, 280px)",
+          color: "rgba(255,92,0,0.03)", lineHeight: 1, whiteSpace: "nowrap",
+          pointerEvents: "none", userSelect: "none",
         }}>FOUNDATION</div>
 
-        <div style={{ maxWidth: 800, zIndex: 1 }}>
+        <div style={{ maxWidth: 560, zIndex: 1 }}>
           <div className="fade-up" style={{ animationDelay: "0.2s" }}>
             <span style={{
-              fontFamily: "'Permanent Marker', cursive", fontSize: 14,
-              color: "#FF6B35", letterSpacing: 5, display: "block", marginBottom: 20,
-            }}>★ CUSTOM BUILT SKATEBOARD RAMPS ★</span>
+              display: "inline-block", fontFamily: "'Space Mono', monospace",
+              fontSize: 10, letterSpacing: 3, textTransform: "uppercase",
+              color: "var(--orange)", border: "1px solid var(--orange)",
+              padding: "5px 12px", borderRadius: 2, marginBottom: 24,
+            }}>★ Custom Built Skateboard Ramps ★</span>
           </div>
 
           <h1 className="fade-up" style={{
-            fontFamily: "'Oswald', sans-serif", fontSize: "clamp(48px, 8vw, 96px)",
-            fontWeight: 800, textTransform: "uppercase", lineHeight: 0.95,
-            letterSpacing: -2, animationDelay: "0.4s",
+            fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(64px, 9vw, 120px)",
+            lineHeight: 0.9, letterSpacing: 2, animationDelay: "0.4s",
           }}>
-            <span style={{ color: "#f5f5f0" }}>BUILD YOUR</span><br />
-            <span style={{ color: "#FF6B35", textShadow: "0 0 60px rgba(255,107,53,0.3)" }}>FOUNDATION</span>
+            Build Your<br /><em style={{ fontStyle: "normal", color: "var(--orange)" }}>Foundation</em>
           </h1>
 
           <p className="fade-up" style={{
-            fontSize: 18, color: "#888", maxWidth: 480, lineHeight: 1.7,
-            marginTop: 24, fontWeight: 300, animationDelay: "0.6s",
+            fontSize: 16, color: "rgba(255,255,255,0.45)", maxWidth: 380, lineHeight: 1.7,
+            marginTop: 24, animationDelay: "0.6s",
           }}>
             Custom-built ramps, rails, and obstacles designed for riders who demand the real deal. From backyard setups to full skatepark builds.
           </p>
 
-          <div className="fade-up" style={{ marginTop: 40, display: "flex", gap: 16, flexWrap: "wrap", animationDelay: "0.8s" }}>
-            <button className="glow-btn" onClick={() => scrollTo("ramps")}>EXPLORE RAMPS</button>
-            <button className="glow-btn-outline" onClick={() => scrollTo("contact")}>GET IN TOUCH</button>
+          <div className="fade-up" style={{ marginTop: 36, display: "flex", gap: 16, flexWrap: "wrap", animationDelay: "0.8s" }}>
+            <button className="glow-btn" onClick={() => scrollTo("builds")}>View Ramps <span style={{ fontSize: 16 }}>→</span></button>
+            <button className="glow-btn-outline" onClick={() => scrollTo("contact")}>Get In Touch</button>
           </div>
 
           <div className="fade-up" style={{ marginTop: 60, display: "flex", gap: "clamp(30px, 5vw, 60px)", animationDelay: "1s" }}>
@@ -392,12 +453,12 @@ function App() {
               <div className="stat-num"><Counter end={150} suffix="+" /></div>
               <div className="stat-label">Ramps Built</div>
             </div>
-            <div style={{ width: 1, background: "rgba(255,107,53,0.2)" }} />
+            <div style={{ width: 1, background: "rgba(255,92,0,0.15)" }} />
             <div>
               <div className="stat-num"><Counter end={8} suffix="+" /></div>
               <div className="stat-label">Years Experience</div>
             </div>
-            <div style={{ width: 1, background: "rgba(255,107,53,0.2)" }} />
+            <div style={{ width: 1, background: "rgba(255,92,0,0.15)" }} />
             <div>
               <div className="stat-num"><Counter end={100} suffix="%" /></div>
               <div className="stat-label">Custom Builds</div>
@@ -407,53 +468,85 @@ function App() {
 
         <div style={{
           position: "absolute", right: "clamp(-50px, 2vw, 80px)",
-          bottom: "clamp(40px, 8vh, 120px)", opacity: 0.2, pointerEvents: "none",
+          bottom: "clamp(40px, 8vh, 120px)", opacity: 0.15, pointerEvents: "none",
         }}>
-          <img src="logo.jpeg" alt="Foundation Ramps Blueprint" style={{ width: "clamp(300px, 35vw, 500px)", height: "auto" }} />
+          <img src="logo.jpeg" alt="" style={{ width: "clamp(300px, 35vw, 500px)", height: "auto" }} />
         </div>
       </section>
 
       {/* MARQUEE */}
-      <div style={{ background: "#FF6B35", padding: "14px 0", overflow: "hidden", whiteSpace: "nowrap" }}>
+      <div style={{ background: "var(--orange)", padding: "12px 0", overflow: "hidden", whiteSpace: "nowrap" }}>
         <div style={{ display: "inline-block", animation: "marquee 20s linear infinite" }}>
           {Array(10).fill(null).map((_, i) => (
             <span key={i} style={{
-              fontFamily: "'Oswald', sans-serif", fontWeight: 700, fontSize: 14,
-              letterSpacing: 4, color: "#0a0a0a", padding: "0 40px",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: 14,
+              letterSpacing: 4, color: "var(--black)", padding: "0 40px",
             }}>HALFPIPES ★ QUARTER PIPES ★ GRIND BOXES ★ RAILS ★ CUSTOM BUILDS ★ </span>
           ))}
         </div>
       </div>
 
+      {/* WHAT WE BUILD — Images replacing 3D models */}
+      <section id="builds" style={{ padding: "120px clamp(20px, 4vw, 60px)", background: "var(--black)" }}>
+        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 60, flexWrap: "wrap", gap: 16 }}>
+            <div>
+              <div className="section-label">Our Builds</div>
+              <h2 className="section-title">What We <em>Build</em></h2>
+            </div>
+            <span onClick={() => scrollTo("ramps")} style={{
+              fontFamily: "'Space Mono', monospace", fontSize: 11, letterSpacing: 3,
+              textTransform: "uppercase", color: "var(--orange)", cursor: "pointer",
+              borderBottom: "1px solid var(--orange)", paddingBottom: 2,
+            }}>Ramps 101 →</span>
+          </div>
+          <div className="ramps-grid-main" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
+            {WHAT_WE_BUILD.map((ramp, i) => (
+              <div key={i} className="ramp-img-card">
+                <div className="ramp-img-wrap">
+                  <img src={ramp.img} alt={ramp.name} loading="lazy" />
+                </div>
+                <div className="ramp-card-info">
+                  <div className="ramp-card-num">{ramp.num} — Ramp</div>
+                  <div className="ramp-card-name">{ramp.name}</div>
+                  <div className="ramp-card-desc">{ramp.desc}</div>
+                  <div className="ramp-card-arrow">↗</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* RAMPS 101 */}
-      <section id="ramps" className="blueprint-grid" style={{ padding: "100px clamp(20px, 4vw, 60px)", position: "relative" }}>
+      <section id="ramps" className="blueprint-grid" style={{ padding: "120px clamp(20px, 4vw, 60px)", position: "relative" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">RAMPS 101</div>
+          <div className="section-label">Ramps 101</div>
           <h2 className="section-title" style={{ marginBottom: 16 }}>
-            KNOW YOUR<br /><span style={{ color: "#FF6B35" }}>RAMPS</span>
+            Know Your <em>Ramps</em>
           </h2>
-          <p style={{ color: "#666", maxWidth: 500, lineHeight: 1.7, marginBottom: 50, fontSize: 15 }}>
+          <p style={{ color: "rgba(255,255,255,0.4)", maxWidth: 460, lineHeight: 1.7, marginBottom: 50, fontSize: 15 }}>
             Every ramp serves a different purpose. Whether you're a beginner building your first backyard setup or going pro — here's what we build.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24 }}>
-            {RAMPS.map((ramp, i) => (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 20 }}>
+            {RAMPS_101.map((ramp, i) => (
               <div key={i} className="card-hover" style={{
-                background: activeRamp === i ? "rgba(255,107,53,0.08)" : "rgba(255,255,255,0.02)",
-                border: "1px solid " + (activeRamp === i ? "rgba(255,107,53,0.3)" : "rgba(255,255,255,0.06)"),
+                background: activeRamp === i ? "rgba(255,92,0,0.06)" : "rgba(255,255,255,0.02)",
+                border: "1px solid " + (activeRamp === i ? "rgba(255,92,0,0.2)" : "rgba(255,255,255,0.05)"),
                 padding: 32, cursor: "pointer", transition: "all 0.4s",
                 position: "relative", overflow: "hidden",
               }} onClick={() => setActiveRamp(i)} onMouseEnter={() => setActiveRamp(i)}>
                 <div style={{
                   position: "absolute", top: 12, right: 16,
-                  fontFamily: "'Oswald'", fontSize: 48, fontWeight: 800, color: "rgba(255,107,53,0.06)",
+                  fontFamily: "'Bebas Neue'", fontSize: 48, color: "rgba(255,92,0,0.05)",
                 }}>0{i + 1}</div>
                 <RampIcon type={ramp.icon} />
                 <h3 style={{
-                  fontFamily: "'Oswald', sans-serif", fontWeight: 700, fontSize: 22,
+                  fontFamily: "'Bebas Neue', sans-serif", fontSize: 24,
                   letterSpacing: 2, marginTop: 16, marginBottom: 10,
                 }}>{ramp.name}</h3>
-                <p style={{ color: "#888", fontSize: 14, lineHeight: 1.7 }}>{ramp.desc}</p>
+                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.7 }}>{ramp.desc}</p>
               </div>
             ))}
           </div>
@@ -462,26 +555,23 @@ function App() {
 
       {/* RAILS */}
       <section id="rails" style={{
-        padding: "100px clamp(20px, 4vw, 60px)",
-        background: "linear-gradient(180deg, rgba(255,107,53,0.03) 0%, #0a0a0a 100%)",
+        padding: "120px clamp(20px, 4vw, 60px)",
+        background: "linear-gradient(180deg, rgba(255,92,0,0.02) 0%, var(--black) 100%)",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">GRIND GAME</div>
+          <div className="section-label">Grind Game</div>
           <h2 className="section-title" style={{ marginBottom: 50 }}>
-            TYPES OF<br /><span style={{ color: "#FF6B35" }}>RAILS</span>
+            Types of <em>Rails</em>
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 2 }}>
             {RAILS.map((rail, i) => (
-              <div key={i} style={{
-                background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)",
-                padding: "36px 28px", position: "relative", overflow: "hidden", transition: "all 0.3s",
-              }}>
-                <div style={{ width: 40, height: 3, background: "#FF6B35", marginBottom: 20 }} />
+              <div key={i} className="rail-card">
+                <div style={{ width: 40, height: 2, background: "var(--orange)", marginBottom: 20 }} />
                 <h3 style={{
-                  fontFamily: "'Oswald', sans-serif", fontWeight: 700, fontSize: 20,
-                  letterSpacing: 2, marginBottom: 12,
+                  fontFamily: "'Bebas Neue', sans-serif", fontSize: 22,
+                  letterSpacing: 2, marginBottom: 10,
                 }}>{rail.name}</h3>
-                <p style={{ color: "#777", fontSize: 14, lineHeight: 1.7 }}>{rail.desc}</p>
+                <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.7 }}>{rail.desc}</p>
                 <RailIcon index={i} />
               </div>
             ))}
@@ -490,75 +580,55 @@ function App() {
       </section>
 
       {/* ANATOMY OF A SKATEBOARD */}
-      <section id="skateboard" className="blueprint-grid" style={{ padding: "100px clamp(20px, 4vw, 60px)", position: "relative" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">KNOW YOUR GEAR</div>
+      <section id="skateboard" style={{ padding: "120px clamp(20px, 4vw, 60px)", background: "#0d0d0d", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
+          <div className="section-label">Know Your Setup</div>
           <h2 className="section-title" style={{ marginBottom: 50 }}>
-            ANATOMY OF A<br /><span style={{ color: "#FF6B35" }}>SKATEBOARD</span>
+            Anatomy of a <em>Skateboard</em>
           </h2>
 
-          <div className="board-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "start" }}>
+          <div className="board-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div style={{
-              position: "relative", background: "rgba(255,107,53,0.03)",
-              border: "1px solid rgba(255,107,53,0.1)", borderRadius: 4,
+              position: "relative", background: "rgba(255,92,0,0.02)",
+              border: "1px solid rgba(255,255,255,0.07)", borderRadius: 4,
               padding: 40, aspectRatio: "1", minHeight: 400,
             }}>
-              <svg viewBox="0 0 300 300" style={{ width: "100%", height: "100%" }} fill="none" stroke="#f5f5f0" strokeWidth="1.5">
-                <path d="M80 60 Q60 60 55 80 L45 220 Q42 250 70 260 L230 260 Q258 250 255 220 L245 80 Q240 60 220 60 Z" fill="rgba(255,107,53,0.05)" stroke="#FF6B35" strokeWidth="2" />
-                <line x1="150" y1="65" x2="150" y2="255" stroke="rgba(255,107,53,0.15)" strokeDasharray="4 4" />
-                <rect x="90" y="100" width="120" height="8" rx="3" fill="rgba(255,255,255,0.1)" stroke="#888" />
-                <rect x="90" y="210" width="120" height="8" rx="3" fill="rgba(255,255,255,0.1)" stroke="#888" />
-                <circle cx="80" cy="104" r="14" fill="rgba(255,107,53,0.1)" stroke="#FF6B35" />
-                <circle cx="220" cy="104" r="14" fill="rgba(255,107,53,0.1)" stroke="#FF6B35" />
-                <circle cx="80" cy="214" r="14" fill="rgba(255,107,53,0.1)" stroke="#FF6B35" />
-                <circle cx="220" cy="214" r="14" fill="rgba(255,107,53,0.1)" stroke="#FF6B35" />
-                <circle cx="80" cy="104" r="4" fill="#FF6B35" opacity="0.5" />
-                <circle cx="220" cy="104" r="4" fill="#FF6B35" opacity="0.5" />
-                <circle cx="80" cy="214" r="4" fill="#FF6B35" opacity="0.5" />
-                <circle cx="220" cy="214" r="4" fill="#FF6B35" opacity="0.5" />
-                <path d="M150 50 L145 40 M150 50 L155 40" stroke="#FF6B35" />
-                <text x="150" y="35" textAnchor="middle" fill="#FF6B35" fontSize="10" fontFamily="Oswald">NOSE</text>
-                <path d="M150 270 L145 280 M150 270 L155 280" stroke="#FF6B35" />
-                <text x="150" y="295" textAnchor="middle" fill="#FF6B35" fontSize="10" fontFamily="Oswald">TAIL</text>
+              <svg viewBox="0 0 300 300" style={{ width: "100%", height: "100%" }} fill="none" stroke="#f5f2ec" strokeWidth="1.5">
+                <path d="M80 60 Q60 60 55 80 L45 220 Q42 250 70 260 L230 260 Q258 250 255 220 L245 80 Q240 60 220 60 Z" fill="rgba(255,92,0,0.04)" stroke="var(--orange)" strokeWidth="2" />
+                <line x1="150" y1="65" x2="150" y2="255" stroke="rgba(255,92,0,0.1)" strokeDasharray="4 4" />
+                <rect x="90" y="100" width="120" height="8" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" />
+                <rect x="90" y="210" width="120" height="8" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" />
+                <circle cx="80" cy="104" r="14" fill="rgba(255,92,0,0.08)" stroke="var(--orange)" />
+                <circle cx="220" cy="104" r="14" fill="rgba(255,92,0,0.08)" stroke="var(--orange)" />
+                <circle cx="80" cy="214" r="14" fill="rgba(255,92,0,0.08)" stroke="var(--orange)" />
+                <circle cx="220" cy="214" r="14" fill="rgba(255,92,0,0.08)" stroke="var(--orange)" />
+                <circle cx="80" cy="104" r="4" fill="var(--orange)" opacity="0.4" />
+                <circle cx="220" cy="104" r="4" fill="var(--orange)" opacity="0.4" />
+                <circle cx="80" cy="214" r="4" fill="var(--orange)" opacity="0.4" />
+                <circle cx="220" cy="214" r="4" fill="var(--orange)" opacity="0.4" />
+                <path d="M150 50 L145 40 M150 50 L155 40" stroke="var(--orange)" />
+                <text x="150" y="35" textAnchor="middle" fill="var(--orange)" fontSize="10" fontFamily="Bebas Neue">NOSE</text>
+                <path d="M150 270 L145 280 M150 270 L155 280" stroke="var(--orange)" />
+                <text x="150" y="295" textAnchor="middle" fill="var(--orange)" fontSize="10" fontFamily="Bebas Neue">TAIL</text>
               </svg>
-              {BOARD_PARTS.map((part, i) => (
-                <div key={i}
-                  className={"part-dot" + (activePart === i ? " active" : "")}
-                  style={{ left: part.x + "%", top: part.y + "%" }}
-                  onClick={() => setActivePart(activePart === i ? null : i)}
-                  title={part.name}
-                />
-              ))}
+              <div style={{
+                position: "absolute", top: 14, right: 14, fontFamily: "'Space Mono', monospace",
+                fontSize: 9, letterSpacing: 2, color: "rgba(255,255,255,0.2)", textTransform: "uppercase",
+              }}>Interactive</div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {BOARD_PARTS.map((part, i) => (
-                <div key={i} onClick={() => setActivePart(activePart === i ? null : i)} style={{
-                  padding: "16px 20px",
-                  background: activePart === i ? "rgba(255,107,53,0.1)" : "rgba(255,255,255,0.02)",
-                  border: "1px solid " + (activePart === i ? "rgba(255,107,53,0.3)" : "rgba(255,255,255,0.05)"),
-                  cursor: "pointer", transition: "all 0.3s",
-                }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <h4 style={{
-                      fontFamily: "'Oswald', sans-serif", fontSize: 16, fontWeight: 600,
-                      letterSpacing: 2, color: activePart === i ? "#FF6B35" : "#f5f5f0",
-                      transition: "color 0.3s",
-                    }}>{part.name}</h4>
-                    <span style={{
-                      color: "#FF6B35", fontSize: 18,
-                      transform: activePart === i ? "rotate(45deg)" : "rotate(0)",
-                      transition: "transform 0.3s", display: "inline-block",
-                    }}>+</span>
-                  </div>
-                  {activePart === i && (
-                    <p style={{
-                      color: "#888", fontSize: 13, lineHeight: 1.7,
-                      marginTop: 10, animation: "fadeUp 0.3s ease-out",
-                    }}>{part.desc}</p>
-                  )}
-                </div>
-              ))}
+            <div>
+              <ul className="parts-list">
+                {BOARD_PARTS.map((part, i) => (
+                  <li key={i}>
+                    <span className="part-num">{part.num}</span>
+                    <div>
+                      <div className="part-name">{part.name}</div>
+                      <div className="part-desc">{part.desc}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -566,45 +636,45 @@ function App() {
 
       {/* ABOUT */}
       <section id="about" style={{
-        padding: "100px clamp(20px, 4vw, 60px)",
-        background: "linear-gradient(135deg, rgba(255,107,53,0.05) 0%, #0a0a0a 60%)",
+        padding: "120px clamp(20px, 4vw, 60px)",
+        background: "linear-gradient(135deg, rgba(255,92,0,0.04) 0%, var(--black) 60%)",
         position: "relative", overflow: "hidden",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">THE FOUNDER</div>
+          <div className="section-label">The Founder</div>
           <h2 className="section-title" style={{ marginBottom: 50 }}>
-            MEET<br /><span style={{ color: "#FF6B35" }}>MATTHEW</span>
+            Meet <em>Matthew</em>
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 60, alignItems: "center" }}>
             <div style={{
-              aspectRatio: "3/4", background: "linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,107,53,0.02))",
-              border: "1px solid rgba(255,107,53,0.15)", display: "flex", flexDirection: "column",
+              aspectRatio: "3/4", background: "linear-gradient(135deg, rgba(255,92,0,0.08), rgba(255,92,0,0.02))",
+              border: "1px solid rgba(255,92,0,0.12)", display: "flex", flexDirection: "column",
               alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden",
             }}>
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,107,53,0.3)" strokeWidth="1.5">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="rgba(255,92,0,0.25)" strokeWidth="1.5">
                 <circle cx="40" cy="28" r="16" /><path d="M12 72 Q12 48 40 48 Q68 48 68 72" />
               </svg>
-              <span style={{ color: "#555", fontSize: 12, letterSpacing: 3, marginTop: 16, fontFamily: "'Oswald'" }}>PHOTO COMING SOON</span>
-              <div style={{ position: "absolute", top: 12, left: 12, width: 24, height: 24, borderTop: "2px solid #FF6B35", borderLeft: "2px solid #FF6B35" }} />
-              <div style={{ position: "absolute", top: 12, right: 12, width: 24, height: 24, borderTop: "2px solid #FF6B35", borderRight: "2px solid #FF6B35" }} />
-              <div style={{ position: "absolute", bottom: 12, left: 12, width: 24, height: 24, borderBottom: "2px solid #FF6B35", borderLeft: "2px solid #FF6B35" }} />
-              <div style={{ position: "absolute", bottom: 12, right: 12, width: 24, height: 24, borderBottom: "2px solid #FF6B35", borderRight: "2px solid #FF6B35" }} />
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 3, color: "rgba(255,255,255,0.25)", marginTop: 16, textTransform: "uppercase" }}>Photo Coming Soon</span>
+              <div style={{ position: "absolute", top: 12, left: 12, width: 20, height: 20, borderTop: "1.5px solid var(--orange)", borderLeft: "1.5px solid var(--orange)" }} />
+              <div style={{ position: "absolute", top: 12, right: 12, width: 20, height: 20, borderTop: "1.5px solid var(--orange)", borderRight: "1.5px solid var(--orange)" }} />
+              <div style={{ position: "absolute", bottom: 12, left: 12, width: 20, height: 20, borderBottom: "1.5px solid var(--orange)", borderLeft: "1.5px solid var(--orange)" }} />
+              <div style={{ position: "absolute", bottom: 12, right: 12, width: 20, height: 20, borderBottom: "1.5px solid var(--orange)", borderRight: "1.5px solid var(--orange)" }} />
             </div>
             <div>
-              <p style={{ color: "#aaa", fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+              <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
                 Matthew is the driving force behind Foundation Ramps. A lifelong skateboarder and builder, he's turned his passion for riding and constructing into a business that serves the skate community.
               </p>
-              <p style={{ color: "#aaa", fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
-                With experience working alongside brands like <span style={{ color: "#FF6B35", fontWeight: 600 }}>Red Bull</span> and years spent in the action sports industry, Matthew brings professional-level craftsmanship to every build — from backyard mini ramps to full custom skateparks.
+              <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+                With experience working alongside brands like <span style={{ color: "var(--orange)", fontWeight: 500 }}>Red Bull</span> and years spent in the action sports industry, Matthew brings professional-level craftsmanship to every build — from backyard mini ramps to full custom skateparks.
               </p>
-              <p style={{ color: "#aaa", fontSize: 16, lineHeight: 1.8, marginBottom: 40 }}>
+              <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.8, marginBottom: 40 }}>
                 Every Foundation Ramp is designed with real skaters in mind. No shortcuts. No compromises. Just solid ramps built to ride hard and last.
               </p>
               <div style={{ display: "flex", gap: 32, padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.06)", flexWrap: "wrap" }}>
                 {[{ label: "Red Bull", sub: "Events & Builds" }, { label: "Custom", sub: "Skatepark Design" }, { label: "Community", sub: "Skate Culture" }].map((item, i) => (
                   <div key={i}>
-                    <div style={{ fontFamily: "'Oswald'", fontWeight: 700, fontSize: 16, color: "#FF6B35", letterSpacing: 1 }}>{item.label}</div>
-                    <div style={{ fontSize: 11, color: "#666", letterSpacing: 2, marginTop: 4 }}>{item.sub}</div>
+                    <div style={{ fontFamily: "'Bebas Neue'", fontSize: 18, color: "var(--orange)", letterSpacing: 2 }}>{item.label}</div>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "rgba(255,255,255,0.3)", letterSpacing: 2, marginTop: 4 }}>{item.sub}</div>
                   </div>
                 ))}
               </div>
@@ -614,36 +684,35 @@ function App() {
       </section>
 
       {/* MERCH */}
-      <section id="merch" className="blueprint-grid" style={{ padding: "100px clamp(20px, 4vw, 60px)" }}>
+      <section id="merch" className="blueprint-grid" style={{ padding: "120px clamp(20px, 4vw, 60px)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">REP THE BRAND</div>
+          <div className="section-label">Rep the Brand</div>
           <h2 className="section-title" style={{ marginBottom: 16 }}>
-            FOUNDATION<br /><span style={{ color: "#FF6B35" }}>MERCH</span>
+            Foundation <em>Merch</em>
           </h2>
-          <p style={{ color: "#666", fontSize: 14, marginBottom: 50, letterSpacing: 1 }}>
-            DM us on Instagram to order — <span style={{ color: "#FF6B35" }}>@foundationramps</span>
+          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginBottom: 50, letterSpacing: 1 }}>
+            DM us on Instagram to order — <span style={{ color: "var(--orange)" }}>@foundation_ramps_</span>
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 24 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 20 }}>
             {MERCH.map((item, i) => (
-              <div key={i} className="merch-card card-hover" style={{
-                background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)",
-              }}>
+              <div key={i} className="merch-card card-hover">
                 <div style={{
-                  aspectRatio: "1", background: "linear-gradient(135deg, " + item.color + "22, " + item.color + "08)",
+                  aspectRatio: "1", background: "linear-gradient(135deg, " + item.color + "18, " + item.color + "06)",
                   display: "flex", flexDirection: "column", alignItems: "center",
                   justifyContent: "center", position: "relative",
                 }}>
                   <MerchIcon type={item.type} color={item.color} />
                   <div style={{
-                    fontFamily: "'Permanent Marker', cursive", fontSize: 11,
-                    color: item.color === "#1a1a1a" ? "#f5f5f0" : item.color, opacity: 0.4, marginTop: 8,
+                    fontFamily: "'Permanent Marker', cursive", fontSize: 10,
+                    color: item.color === "#1a1a1a" ? "rgba(255,255,255,0.3)" : item.color, opacity: 0.4, marginTop: 8,
                   }}>FOUNDATION RAMPS</div>
                 </div>
-                <div style={{ padding: "16px 20px 24px" }}>
-                  <div style={{ fontSize: 11, color: "#FF6B35", letterSpacing: 2, marginBottom: 4, fontWeight: 600 }}>{item.type.toUpperCase()}</div>
-                  <div style={{ fontFamily: "'Oswald'", fontWeight: 600, fontSize: 16, letterSpacing: 1 }}>{item.name}</div>
-                  <div style={{ fontFamily: "'Oswald'", fontSize: 20, fontWeight: 700, color: "#FF6B35", marginTop: 8 }}>{item.price}</div>
+                <div style={{ padding: "16px 20px 28px" }}>
+                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, color: "var(--orange)", letterSpacing: 2, marginBottom: 4 }}>{item.type.toUpperCase()}</div>
+                  <div style={{ fontFamily: "'Bebas Neue'", fontSize: 18, letterSpacing: 2 }}>{item.name}</div>
+                  <div style={{ fontFamily: "'Bebas Neue'", fontSize: 22, color: "var(--orange)", marginTop: 8 }}>{item.price}</div>
                 </div>
+                <div className="merch-overlay">DM US ON INSTA →</div>
               </div>
             ))}
           </div>
@@ -651,32 +720,32 @@ function App() {
       </section>
 
       {/* GALLERY */}
-      <section style={{ padding: "100px clamp(20px, 4vw, 60px) 60px", background: "rgba(255,107,53,0.02)" }}>
+      <section style={{ padding: "120px clamp(20px, 4vw, 60px) 60px", background: "rgba(255,92,0,0.02)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">THE WORK</div>
+          <div className="section-label">The Work</div>
           <h2 className="section-title" style={{ marginBottom: 50 }}>
-            BUILD<br /><span style={{ color: "#FF6B35" }}>GALLERY</span>
+            Build <em>Gallery</em>
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 4 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 3 }}>
             {["Backyard Halfpipe", "Custom Quarter Pipe", "Skatepark Build", "Rail Setup", "Mini Ramp Install", "Event Build"].map((item, i) => (
               <div key={i} style={{
                 aspectRatio: "4/3",
-                background: "linear-gradient(135deg, rgba(255,107,53," + (0.03 + i * 0.02) + "), rgba(0,0,0,0.5))",
+                background: "linear-gradient(135deg, rgba(255,92,0," + (0.02 + i * 0.015) + "), rgba(0,0,0,0.5))",
                 display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
                 position: "relative", overflow: "hidden", border: "1px solid rgba(255,255,255,0.03)",
                 cursor: "pointer", transition: "all 0.3s",
               }}>
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="rgba(255,107,53,0.3)" strokeWidth="1">
+                <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="rgba(255,92,0,0.2)" strokeWidth="1">
                   <rect x="4" y="8" width="32" height="24" rx="2" /><circle cx="15" cy="18" r="4" />
                   <path d="M4 28 L14 20 L22 26 L30 16 L36 22" />
                 </svg>
-                <span style={{ fontFamily: "'Oswald'", fontSize: 12, letterSpacing: 3, color: "#555", marginTop: 12 }}>
-                  {item.toUpperCase()}
+                <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 3, color: "rgba(255,255,255,0.2)", marginTop: 12, textTransform: "uppercase" }}>
+                  {item}
                 </span>
               </div>
             ))}
           </div>
-          <p style={{ color: "#555", fontSize: 13, textAlign: "center", marginTop: 24, letterSpacing: 1 }}>
+          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, textAlign: "center", marginTop: 24, letterSpacing: 1, fontFamily: "'Space Mono', monospace" }}>
             More photos coming soon — follow us on social media for the latest builds
           </p>
         </div>
@@ -684,57 +753,60 @@ function App() {
 
       {/* CONTACT */}
       <section id="contact" style={{
-        padding: "100px clamp(20px, 4vw, 60px)",
-        background: "linear-gradient(180deg, #0a0a0a 0%, rgba(255,107,53,0.05) 100%)",
+        padding: "120px clamp(20px, 4vw, 60px)",
+        background: "linear-gradient(180deg, var(--black) 0%, rgba(255,92,0,0.03) 100%)",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="section-tag">LET'S BUILD</div>
+          <div className="section-label">Let's Build</div>
           <h2 className="section-title" style={{ marginBottom: 50 }}>
-            GET IN<br /><span style={{ color: "#FF6B35" }}>TOUCH</span>
+            Get In <em>Touch</em>
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 60 }}>
             <div>
-              <p style={{ color: "#aaa", fontSize: 16, lineHeight: 1.8, marginBottom: 40 }}>
+              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 16, lineHeight: 1.8, marginBottom: 40 }}>
                 Got a ramp project in mind? Whether it's a backyard mini ramp or a full custom skatepark, we're ready to make it happen. Hit us up.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                 {[
                   { icon: "✉", label: "EMAIL", value: "info@foundationramps.com" },
                   { icon: "📱", label: "PHONE", value: "+1 (XXX) XXX-XXXX" },
-                  { icon: "📍", label: "LOCATION", value: "Your City, State" },
+                  { icon: "📍", label: "LOCATION", value: "South Africa" },
                 ].map((c, i) => (
                   <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                     <div style={{
-                      width: 44, height: 44, background: "rgba(255,107,53,0.1)",
+                      width: 44, height: 44, background: "rgba(255,92,0,0.08)",
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 18, flexShrink: 0,
                     }}>{c.icon}</div>
                     <div>
-                      <div style={{ fontSize: 11, letterSpacing: 3, color: "#666", marginBottom: 4, fontWeight: 600 }}>{c.label}</div>
-                      <div style={{ fontSize: 15, color: "#ccc" }}>{c.value}</div>
+                      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 3, color: "rgba(255,255,255,0.3)", marginBottom: 4, textTransform: "uppercase" }}>{c.label}</div>
+                      <div style={{ fontSize: 15, color: "rgba(255,255,255,0.6)" }}>{c.value}</div>
                     </div>
                   </div>
                 ))}
               </div>
               <div style={{ marginTop: 40 }}>
-                <div style={{ fontSize: 11, letterSpacing: 3, color: "#666", marginBottom: 16, fontWeight: 600 }}>FOLLOW US</div>
+                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 3, color: "rgba(255,255,255,0.3)", marginBottom: 16, textTransform: "uppercase" }}>Follow Us</div>
                 <div style={{ display: "flex", gap: 12 }}>
-                  {[{ name: "Instagram", icon: "IG", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" }, { name: "TikTok", icon: "TT", url: "https://vt.tiktok.com/ZSuQy2yqX/" }].map((s, i) => (
+                  {[
+                    { name: "Instagram", icon: "IG", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                    { name: "TikTok", icon: "TT", url: "https://vt.tiktok.com/ZSuQy2yqX/" }
+                  ].map((s, i) => (
                     <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="social-icon" title={s.name}>{s.icon}</a>
                   ))}
                 </div>
               </div>
             </div>
             <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", padding: "36px 32px" }}>
-              <h3 style={{ fontFamily: "'Oswald'", fontWeight: 700, fontSize: 20, letterSpacing: 2, marginBottom: 24 }}>REQUEST A QUOTE</h3>
+              <h3 style={{ fontFamily: "'Bebas Neue'", fontSize: 24, letterSpacing: 3, marginBottom: 24 }}>Request a Quote</h3>
               {["Your Name", "Email Address", "Phone Number"].map((label, i) => (
                 <div key={i} style={{ marginBottom: 16 }}>
-                  <label style={{ fontSize: 11, letterSpacing: 2, color: "#666", display: "block", marginBottom: 6, fontWeight: 600 }}>{label.toUpperCase()}</label>
+                  <label style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 2, color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 6, textTransform: "uppercase" }}>{label}</label>
                   <input type={i === 1 ? "email" : "text"} placeholder={label} />
                 </div>
               ))}
               <div style={{ marginBottom: 16 }}>
-                <label style={{ fontSize: 11, letterSpacing: 2, color: "#666", display: "block", marginBottom: 6, fontWeight: 600 }}>PROJECT TYPE</label>
+                <label style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 2, color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 6, textTransform: "uppercase" }}>Project Type</label>
                 <select>
                   <option>Select ramp type...</option>
                   <option>Halfpipe / Mini Ramp</option>
@@ -746,30 +818,32 @@ function App() {
                 </select>
               </div>
               <div style={{ marginBottom: 24 }}>
-                <label style={{ fontSize: 11, letterSpacing: 2, color: "#666", display: "block", marginBottom: 6, fontWeight: 600 }}>PROJECT DETAILS</label>
+                <label style={{ fontFamily: "'Space Mono', monospace", fontSize: 9, letterSpacing: 2, color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 6, textTransform: "uppercase" }}>Project Details</label>
                 <textarea rows="4" placeholder="Tell us about your build — dimensions, location, budget, timeline..."></textarea>
               </div>
-              <button className="glow-btn" style={{ width: "100%" }}>SEND IT →</button>
+              <button className="glow-btn" style={{ width: "100%" }}>Send It →</button>
             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer style={{ borderTop: "1px solid rgba(255,107,53,0.1)", padding: "40px clamp(20px, 4vw, 60px)", background: "#050505" }}>
-        <div style={{
-          maxWidth: 1200, margin: "0 auto", display: "flex",
-          justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20,
-        }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 36, width: "auto" }} />
-          </div>
-          <div style={{ color: "#555", fontSize: 12, letterSpacing: 1 }}>© 2026 Foundation Ramps. All rights reserved. Built to shred.</div>
-          <div style={{ display: "flex", gap: 20 }}>
-            {[{ name: "Instagram", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" }, { name: "TikTok", url: "https://vt.tiktok.com/ZSuQy2yqX/" }].map((s, i) => (
-              <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="footer-link">{s.name.toUpperCase()}</a>
-            ))}
-          </div>
+      <footer style={{
+        borderTop: "1px solid rgba(255,92,0,0.08)", padding: "40px clamp(20px, 4vw, 60px)",
+        background: "#050505", display: "flex", justifyContent: "space-between",
+        alignItems: "center", flexWrap: "wrap", gap: 20,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <img src="logo.jpeg" alt="Foundation Ramps" style={{ height: 32, width: "auto" }} />
+        </div>
+        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: "rgba(255,255,255,0.2)", letterSpacing: 2 }}>© 2026 Foundation Ramps · Built to Shred</div>
+        <div style={{ display: "flex", gap: 20 }}>
+          {[
+            { name: "Instagram", url: "https://www.instagram.com/foundation_ramps_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+            { name: "TikTok", url: "https://vt.tiktok.com/ZSuQy2yqX/" }
+          ].map((s, i) => (
+            <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="footer-link">{s.name.toUpperCase()}</a>
+          ))}
         </div>
       </footer>
     </div>
